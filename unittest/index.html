@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<LINK href="style.css" rel="stylesheet" type="text/css">
+<title>amfPHP JSON Pizza Example</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="json2.js"></script>
+<script type="text/javascript" src="kw-service-config.js"></script>
+
+
+
+<script language="javascript">    
+    
+   function callServiceHandler(data)
+    {
+        if(data != ''){
+             alert("Member : "  + data[0].fname);
+            $('#response').html(data.name);
+        }
+           
+     }
+     
+    $(document).ready(function(){
+         
+   
+        $('#get_member').click(function(){
+          var  paramExplicitType = 'id';
+          var obj = [{'id':'9'}]; 
+          callServiceParam('MemberService', 'getMember', obj, 'callServiceParamHandler')
+           // callServiceParam();
+        });
+        
+    }); 
+
+    
+     
+    
+</script>
+
+</head>
+
+<body>
+    <h2>amfPHP JSON Pizza Example</h2>
+<input type="button" value="Get A Pizza" id="bimButton" onClick="callService('MemberService', 'getAll', callServiceHandler)" width="200" height="100" />
+<input type="button" value="Get Member" name="get_member" id="get_member" />
+<div id="response" />
+</body>
+</html>
